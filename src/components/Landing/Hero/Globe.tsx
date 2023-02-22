@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Globe = styled.div`
     background-color: black;
     width: 100%;
-    min-height: 5rem;
+    min-height: 50rem;
 `;
 
 // THREE.js
