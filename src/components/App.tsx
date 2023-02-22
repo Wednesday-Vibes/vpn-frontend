@@ -28,7 +28,7 @@ export default function App() {
         createRoutesFromElements(
             <Route path="/" element={<Root />}>
                 <Route index element={<Landing />} />
-                <Route path='/map' element={<Map />} />
+
 
 
             </Route>
