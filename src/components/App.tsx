@@ -25,7 +25,6 @@ export default function App() {
             <Route path="/" element={<Root />}>
                 <Route index element={<Landing />} />
                 <Route path="/map" element={<Product />} />
-
             </Route>
         )
     );

@@ -12,7 +12,7 @@ function Navbar() {
 
                     <ul>
                         <li className="nav-li">
-                            <Link className="nav-Link" to="/platform">
+                            <Link className="nav-Link" to="/map">
                                 Platform
                             </Link>
                         </li>
