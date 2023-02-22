@@ -3,7 +3,7 @@ import DeckGL from '@deck.gl/react/typed';
 import type { DeckGLRef } from '@deck.gl/react/typed';
 import StaticMap from 'react-map-gl';
 import { ScatterplotLayer } from '@deck.gl/layers/typed';
-import { Connection } from '../../logic/types';
+import { Connection } from '../../../logic/types';
 
 interface Props {
     connection: Connection;
