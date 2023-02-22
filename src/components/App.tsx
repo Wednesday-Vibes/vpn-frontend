@@ -1,52 +1,41 @@
 import Landing from './Landing/Landing';
 
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-
 import {
     createBrowserRouter,
     RouterProvider,
     Route,
-    Link, Outlet,
+    Link,
+    Outlet,
     createRoutesFromElements
-} from "react-router-dom";
+} from 'react-router-dom';
 
 const Root = () => (
     <>
-
-        <div>
+        <div className="App">
             <Outlet />
         </div>
     </>
-
 );
 
-
 export default function App() {
-
     const router = createBrowserRouter(
         createRoutesFromElements(
             <Route path="/" element={<Root />}>
                 <Route index element={<Landing />} />
                 {/* <Route path='/map' element={<Map />} /> */}
-
-
             </Route>
-
-
         )
     );
 
-
     return (
-
-
-        <body>
-
-            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inter" />
+        <>
+            <link
+                rel="stylesheet"
+                type="text/css"
+                href="https://fonts.googleapis.com/css?family=Inter"
+            />
 
             <RouterProvider router={router} />
-        </body>
+        </>
     );
 }
-

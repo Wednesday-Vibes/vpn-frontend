@@ -1,3 +1,7 @@
+import Hero from './Hero/Hero'
+
 export default function Landing() {
-    return <div className="hello">Hello</div>;
+    return <div className="landing">
+        <Hero />
+    </div>;
 }
