@@ -1,11 +1,11 @@
 import Navbar from '../Landing/Header/navbar';
+import Hero from './Hero/Hero';
 
-function Landing() {
+export default function Landing() {
     return (
-        <>
+        <div className="landing">
             <Navbar />
-        </>
+            <Hero />
+        </div>
     );
 }
-
-export default Landing;

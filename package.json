@@ -13,12 +13,17 @@
         "@deck.gl/react": "^8.8.25",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-leaflet": "^4.2.0",
+        "styled-components": "^5.3.6",
+        "three": "^0.149.0",
         "react-map-gl": "^7.0.21",
         "react-router-dom": "^6.8.1"
     },
     "devDependencies": {
         "@types/react": "^18.0.27",
         "@types/react-dom": "^18.0.10",
+        "@types/styled-components": "^5.1.26",
+        "@types/three": "^0.149.0",
         "@typescript-eslint/eslint-plugin": "^5.51.0",
         "@typescript-eslint/parser": "^5.51.0",
         "@vitejs/plugin-react": "^3.1.0",

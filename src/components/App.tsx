@@ -1,6 +1,5 @@
 import Landing from './Landing/Landing';
-import ReactDOM from 'react-dom/client';
-
+import Product from './Product/Product';
 import {
     createBrowserRouter,
     RouterProvider,
@@ -9,11 +8,10 @@ import {
     Outlet,
     createRoutesFromElements
 } from 'react-router-dom';
-import Product from './Product/Product';
 
 const Root = () => (
     <>
-        <div>
+        <div className="App">
             <Outlet />
         </div>
     </>
@@ -30,13 +28,14 @@ export default function App() {
     );
 
     return (
-        <body>
+        <>
             <link
                 rel="stylesheet"
                 type="text/css"
                 href="https://fonts.googleapis.com/css?family=Inter"
             />
+
             <RouterProvider router={router} />
-        </body>
+        </>
     );
 }
