@@ -2,9 +2,10 @@ import * as THREE from 'three';
 import { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
-const Globe = styled.canvas`
+const Globe = styled.div`
     background-color: black;
     width: 100%;
+    min-height: 5rem;
 `;
 
 // THREE.js
@@ -37,14 +38,12 @@ type GlobeProps = {
 export default ({ connections }: GlobeProps) => {
     // show connections between cities
     console.log(connections);
-
-    // create globe
-    const globeRef = useRef<HTMLCanvasElement>(null);
+    const globeRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
         if (globeRef.current !== null) {
             globeRef.current.appendChild(renderer.domElement);
         }
     }, []);
 
-    return <Globe ref={globeRef} />;
+    return <Globe className="globe-container" ref={globeRef} />;
 };
