@@ -5,8 +5,8 @@ export default function Product() {
         <div className="product-container">
             <MapDeckGL
                 connection={{
-                    latitude: 52.1951,
-                    longitude: 0.119167,
+                    latitude: 52.21438270370086,
+                    longitude: 0.13696066558991374,
                     name: 'Test'
                 }}
             />
