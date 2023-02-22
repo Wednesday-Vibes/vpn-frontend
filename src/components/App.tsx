@@ -1,5 +1,5 @@
 import Landing from './Landing/Landing';
-
+import Product from './Product/Product';
 import {
     createBrowserRouter,
     RouterProvider,
@@ -22,7 +22,7 @@ export default function App() {
         createRoutesFromElements(
             <Route path="/" element={<Root />}>
                 <Route index element={<Landing />} />
-                {/* <Route path='/map' element={<Map />} /> */}
+                <Route path="/map" element={<Product />} />
             </Route>
         )
     );
