@@ -1,23 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../static/logo.png';
 
 function Navbar() {
-
-
     return (
         <>
             <nav className="nav-white">
                 <div className="nav-container">
                     <Link to="/">
-                        <img src={logob} alt="Logo" />
+                        <button>Logo</button>
                     </Link>
 
                     <ul>
-
                         <li className="nav-li">
-                            <Link className="nav-Link" to="/about">
-                                About
+                            <Link className="nav-Link" to="/map">
+                                Platform
                             </Link>
                         </li>
                         <li className="nav-li">
@@ -30,12 +26,12 @@ function Navbar() {
                     <div className="ln">
                         <ul>
                             <li className="nav-li">
-                                <Link className="nav-Link" to="https://app.bootprint.com">
+                                <Link className="nav-Link" to="/login">
                                     Log In
                                 </Link>
                             </li>
                         </ul>
-                        <Link to="https://app.bootprint.com/sign_up">
+                        <Link to="/signup">
                             <button>Sign Up</button>
                         </Link>
                     </div>
