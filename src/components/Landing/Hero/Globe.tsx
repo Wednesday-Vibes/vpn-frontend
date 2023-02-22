@@ -37,7 +37,6 @@ type GlobeProps = {
 
 export default ({ connections }: GlobeProps) => {
     // show connections between cities
-    console.log(connections);
     const globeRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
         if (globeRef.current !== null) {
