@@ -1,0 +1,81 @@
+---
+# Source: vpn-frontend/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vpn-frontend
+  namespace: {{ $.Release.Namespace }}
+  labels: {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vpn-frontend
+  template:
+    metadata:
+      labels:
+        app: vpn-frontend
+    spec:
+      securityContext: {}
+      containers:
+        - name: vpn-frontend
+          volumeMounts:
+            - mountPath: /vpn-frontend/src
+              name: host-mount-src
+            - mountPath: /vpn-frontend/public
+              name: host-mount-public
+            - mountPath: /secrets
+              name: vpn-frontend
+          securityContext: null
+          image: "localhost:5001/vpn-frontend:dev"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 500Mi
+            requests:
+              cpu: 500m
+              memory: 500Mi
+      volumes:
+        - name: host-mount-src
+          hostPath:
+            path: /host/vpn-frontend/src
+        - name: host-mount-public
+          hostPath:
+            path: /host/vpn-frontend/public
+        - name: vpn-frontend
+          secret:
+            optional: false
+            secretName: vpn-frontend
+
+---
+# Source: vpn-frontend/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: vpn-frontend
+  namespace: {{ $.Release.Namespace }}
+  labels: {}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: vpn-frontend
+---
+# Source: vpn-frontend/templates/secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vpn-frontend
+  namespace: default 
+type: Opaque
+stringData:
+{{- toYaml .Values.secrets  | nindent 2 }}

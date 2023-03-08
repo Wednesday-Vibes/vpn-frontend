@@ -1,0 +1,88 @@
+name: vpn-frontend
+deployment: 
+  replicaCount: 1
+  podAnnotations: {}
+  podSecurityContext: {}
+  # fsGroup: 2000
+  volumeMounts: []
+  volumes: []
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+  image:
+    repository: ghcr.io/wednesday-vibes/vpn-frontend
+    pullPolicy: Always
+    tag: "latest"
+  resources: 
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+secret:
+  name: vpn-frontend
+  data:
+    NASA_API_KEY: SECRET
+    FRONTEND_URL: SECRET
+
+persistantVolume:
+  create: true
+  storageCapacity: 100M
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-storage
+  local:
+    path: /server
+
+global:
+  annotations: {}
+  selectorLabels: 
+    app: server
+
+imagePullSecrets: []
+
+serviceAccount:
+  create: false
+  annotations: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: ""
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /vpn-frontend
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+
+
+autoscaling:
+  enabled: false
+  name: "vpn-frontend-hpa"
+  minReplicas: 1
+  maxReplicas: 1
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+

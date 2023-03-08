@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  vpn-frontend:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    image: vpn-frontend
+    ports:
+      - 3000:3000
