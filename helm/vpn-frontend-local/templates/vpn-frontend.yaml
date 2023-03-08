@@ -27,7 +27,7 @@ spec:
             - mountPath: /secrets
               name: vpn-frontend
           securityContext: null
-          image: "localhost:5001/vpn-frontend:dev"
+          image: "0.0.0.0:5001/vpn-frontend:dev"
           imagePullPolicy: Always
           ports:
             - name: http

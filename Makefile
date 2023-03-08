@@ -11,8 +11,8 @@ push:
 	docker push ghcr.io/wednesday-vibes/vpn-frontend
 
 push-kind:
-	docker tag ${PROJECT}:latest localhost:5001/${PROJECT}:dev
-	docker push localhost:5001/${PROJECT}:dev
+	docker tag ${PROJECT}:latest 0.0.0.0:5001/${PROJECT}:dev
+	docker push 0.0.0.0:5001/${PROJECT}:dev
 
 apply: 
 	if [ ! -f secret_vals.yaml ]; then echo "secrets: {}" > secret_vals.yaml; fi
