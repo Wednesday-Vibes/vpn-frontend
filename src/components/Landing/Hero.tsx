@@ -5,56 +5,59 @@ const Hero = styled.div`
     position: relative;
     background-color: #edf0f7;
 
-    .hero-floaty {
-        top: 0;
-        left: 0;
-        right: 0;
-        width: min(100%, calc(var(--landing-page-max-width) - calc(var(--landing-page-side-padding) * 2)));
-        height: 100%;
-        min-height: 50rem;
-        margin: 0 auto;
-        padding: 3rem var(--landing-page-side-padding);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        z-index: 1;
+    .hero-floaty-container {
+        width: 100%;
+        padding: 0rem var(--landing-page-side-padding);
 
-        .hero__content {
+        .hero-floaty {
+            top: 0;
+            left: 0;
+            right: 0;
+            max-width: calc(var(--landing-page-max-width));
+            height: 100%;
+            min-height: 50rem;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            text-align: center;
-            gap: 2rem;
-            width: min(100%, 60rem);
-
-            .hero__text {
-                max-width: 70%;
-                h1 {
-                    font-size: 28px;
-                    margin-bottom: 1rem;
-                }
-                p {
-                    font-size: 14px;
-                    font-weight: 500;
-                }
-            }
-            .hero__buttons {
-                display: flex;
-                gap: 2rem;
-            }
-        }
-
-        @media (min-width: 769px) {
-            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+            z-index: 1;
 
             .hero__content {
-                align-items: flex-start;
-                text-align: left;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                gap: 2rem;
+                width: min(100%, 60rem);
 
                 .hero__text {
-                    max-width: none;
+                    max-width: 70%;
+                    h1 {
+                        font-size: 28px;
+                        margin-bottom: 1rem;
+                    }
+                    p {
+                        font-size: 14px;
+                        font-weight: 500;
+                    }
+                }
+                .hero__buttons {
+                    display: flex;
+                    gap: 2rem;
+                }
+            }
+
+            @media (min-width: 769px) {
+                justify-content: flex-start;
+
+                .hero__content {
+                    align-items: flex-start;
+                    text-align: left;
+
+                    .hero__text {
+                        max-width: none;
+                    }
                 }
             }
         }
@@ -72,18 +75,21 @@ export default () => {
                     }
                 ]}
             />
-            <div className="hero-floaty">
-                <div className="hero__content">
-                    <div className="hero__text">
-                        <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h1>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita deleniti nobis enim dignissimos, eum eveniet
-                            quod, quisquam voluptatibus sequi illo vel ea adipisci aliquam atque cum modi alias possimus delectus.
-                        </p>
-                    </div>
-                    <div className="hero__buttons">
-                        <button>Large</button>
-                        <button className="button--secondary">Large</button>
+            <div className="hero-floaty-container">
+                <div className="hero-floaty">
+                    <div className="hero__content">
+                        <div className="hero__text">
+                            <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h1>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita deleniti nobis enim dignissimos, eum
+                                eveniet quod, quisquam voluptatibus sequi illo vel ea adipisci aliquam atque cum modi alias possimus
+                                delectus.
+                            </p>
+                        </div>
+                        <div className="hero__buttons">
+                            <button>Large</button>
+                            <button className="button--secondary">Large</button>
+                        </div>
                     </div>
                 </div>
             </div>
