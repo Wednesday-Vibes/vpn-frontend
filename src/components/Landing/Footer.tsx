@@ -54,11 +54,11 @@ export default () => {
                 <p>Copyright 2022 VPN Frontend</p>
             </div>
             <div className="footer__links">
-                <a href="https://github.com/my-username/my-repo">Privacy Policy</a>
-                <a href="https://github.com/my-username/my-repo">Terms and Conditions</a>
-                <a href="https://github.com/my-username/my-repo">Cookie Policy</a>
-                <a href="https://github.com/my-username/my-repo">Contact</a>
-                <a href="https://github.com/my-username/my-repo">View on GitHub</a>
+                <a href="https://github.com/Wednesday-Vibes/vpn-frontend/">Privacy Policy</a>
+                <a href="https://github.com/Wednesday-Vibes/vpn-frontend/">Terms and Conditions</a>
+                <a href="https://github.com/Wednesday-Vibes/vpn-frontend/">Cookie Policy</a>
+                <a href="https://github.com/Wednesday-Vibes/vpn-frontend/">Contact</a>
+                <a href="https://github.com/Wednesday-Vibes/vpn-frontend/">View on GitHub</a>
             </div>
         </Footer>
     );
