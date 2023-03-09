@@ -49,17 +49,13 @@ export default () => {
 
             <div className="testimonials">
                 <Testimonial
-                    imageSrc="../../../public/pexels-mariatheodora-andrikopoulou-14390223.jpg"
+                    imageSrc="/pexels-mariatheodora-andrikopoulou-14390223.jpg"
                     title="Karen. M"
                     textContent={"That's all she wrote"}
                 />
+                <Testimonial imageSrc="/pexels-mathilde-langevin-15823364.jpg" title="John. S" textContent={"That's all he wrote"} />
                 <Testimonial
-                    imageSrc="../../../public/pexels-mathilde-langevin-15823364.jpg"
-                    title="John. S"
-                    textContent={"That's all he wrote"}
-                />
-                <Testimonial
-                    imageSrc="../../../public/pexels-matt-hardy-5327027.jpg"
+                    imageSrc="/pexels-matt-hardy-5327027.jpg"
                     title="Mason. M"
                     textContent={
                         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla perspiciatis voluptatibus voluptatem doloremque id, nostrum nihil pariatur consectetur, architecto ut quidem temporibus reiciendis non sed veniam inventore doloribus nobis dicta.'
