@@ -14,6 +14,7 @@ const Hero = styled.div`
             left: 0;
             right: 0;
             max-width: calc(var(--landing-page-max-width));
+            margin: 0 auto;
             height: 100%;
             min-height: 50rem;
             display: flex;
