@@ -14,6 +14,7 @@ const Hero = styled.div`
         margin: 0 auto;
         padding: 3rem 2rem;
         display: flex;
+        justify-content: center;
         align-items: center;
         position: relative;
         z-index: 1;
@@ -42,8 +43,12 @@ const Hero = styled.div`
                 display: flex;
                 gap: 2rem;
             }
+        }
 
-            @media (min-width: 768px) {
+        @media (min-width: 768px) {
+            justify-content: flex-start;
+
+            .hero__content {
                 align-items: flex-start;
                 text-align: left;
 
