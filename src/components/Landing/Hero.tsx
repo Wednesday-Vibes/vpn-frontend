@@ -31,9 +31,13 @@ const Hero = styled.div`
                 text-align: center;
                 gap: 2rem;
                 width: min(100%, 60rem);
+                padding-block: 2rem;
 
                 .hero__text {
-                    max-width: 70%;
+                    @media (min-width: 769px) {
+                        max-width: 70%;
+                    }
+
                     h1 {
                         font-size: 28px;
                         margin-bottom: 1rem;

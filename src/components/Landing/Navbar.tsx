@@ -17,8 +17,16 @@ const Navbar = styled.nav`
         margin: 0 auto;
         position: relative;
 
-        button.logo {
-            padding-inline: 5rem;
+        .logo-link {
+            opacity: 0;
+            @media (min-width: 481px) {
+                opacity: 1;
+            }
+
+            transition: opacity 0.3s;
+            button.logo {
+                padding-inline: 5rem;
+            }
         }
 
         .hamburger-menu {
@@ -121,7 +129,7 @@ export default () => {
     return (
         <Navbar className="">
             <div className="nav-container">
-                <Link to="/">
+                <Link className="logo-link" to="/">
                     <button className="logo">Logo</button>
                 </Link>
 

@@ -5,9 +5,10 @@ const Testimonial = styled.div`
     border: 1px var(--color-primary) solid;
     flex: 1;
     display: grid;
-    grid-template-rows: 12rem 1fr;
+    grid-template-rows: 12rem minmax(12rem, 1fr);
     overflow: hidden;
     text-align: left;
+    max-width: 55rem;
     .testimonial-image {
         img {
             object-fit: cover;
