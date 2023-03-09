@@ -3,9 +3,10 @@ import { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
 const GlobeContainer = styled.div`
-    background-color: #edf0f7;
     width: 100%;
-    min-height: 50rem;
+    height: 100%;
+    opacity: 50%;
+    position: absolute;
 `;
 
 // THREE.js
@@ -43,6 +44,7 @@ export default ({ connections }: GlobeProps) => {
             camera.aspect = globeContainerRef.current.clientWidth / globeContainerRef.current.clientHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(globeContainerRef.current.clientWidth, globeContainerRef.current.clientHeight);
+            renderer.render(scene, camera);
         }
     };
 
@@ -63,7 +65,6 @@ export default ({ connections }: GlobeProps) => {
         }
 
         window.addEventListener('resize', () => {
-            console.log('resizing');
             resizeCanvas();
         });
     }, []);

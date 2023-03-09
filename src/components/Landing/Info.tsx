@@ -7,10 +7,13 @@ const Info = styled.div`
     align-items: stretch;
     gap: 5rem;
     padding: 10rem 10rem;
-    > div:first-child {
+    > .info__text {
         display: flex;
         flex-direction: column;
         align-items: center;
+        h2 {
+            font-size: 24px;
+        }
         p {
             max-width: 50rem;
         }
@@ -18,26 +21,32 @@ const Info = styled.div`
 
     .testimonials {
         display: flex;
+        margin: 0 auto;
+        max-width: 30rem;
+        flex-direction: column;
         justify-content: center;
         gap: 3rem;
+
+        @media (min-width: 768px) {
+            max-width: none;
+            flex-direction: row;
+        }
     }
 
     .separator {
         height: 0.1rem;
-        background-color: #2d3648;
+        background-color: var(--color-primary);
     }
 
     > a button.call-to-action {
         align-self: center;
-        padding: 0.5rem;
-        background-color: #2d3648;
     }
 `;
 
 export default () => {
     return (
         <Info>
-            <div className="">
+            <div className="info__text">
                 <h2>Header 2</h2>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima libero harum quibusdam dolor in, accusamus animi
@@ -49,17 +58,13 @@ export default () => {
 
             <div className="testimonials">
                 <Testimonial
-                    imageSrc="../../../public/pexels-mariatheodora-andrikopoulou-14390223.jpg"
+                    imageSrc="/pexels-mariatheodora-andrikopoulou-14390223.jpg"
                     title="Karen. M"
                     textContent={"That's all she wrote"}
                 />
+                <Testimonial imageSrc="/pexels-mathilde-langevin-15823364.jpg" title="John. S" textContent={"That's all he wrote"} />
                 <Testimonial
-                    imageSrc="../../../public/pexels-mathilde-langevin-15823364.jpg"
-                    title="John. S"
-                    textContent={"That's all he wrote"}
-                />
-                <Testimonial
-                    imageSrc="../../../public/pexels-matt-hardy-5327027.jpg"
+                    imageSrc="/pexels-matt-hardy-5327027.jpg"
                     title="Mason. M"
                     textContent={
                         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla perspiciatis voluptatibus voluptatem doloremque id, nostrum nihil pariatur consectetur, architecto ut quidem temporibus reiciendis non sed veniam inventore doloribus nobis dicta.'
