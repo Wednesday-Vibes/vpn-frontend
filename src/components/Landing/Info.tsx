@@ -7,10 +7,13 @@ const Info = styled.div`
     align-items: stretch;
     gap: 5rem;
     padding: 10rem 10rem;
-    > div:first-child {
+    > .info__text {
         display: flex;
         flex-direction: column;
         align-items: center;
+        h2 {
+            font-size: 24px;
+        }
         p {
             max-width: 50rem;
         }
@@ -18,8 +21,16 @@ const Info = styled.div`
 
     .testimonials {
         display: flex;
+        margin: 0 auto;
+        max-width: 30rem;
+        flex-direction: column;
         justify-content: center;
         gap: 3rem;
+
+        @media (min-width: 768px) {
+            max-width: none;
+            flex-direction: row;
+        }
     }
 
     .separator {
@@ -35,7 +46,7 @@ const Info = styled.div`
 export default () => {
     return (
         <Info>
-            <div className="">
+            <div className="info__text">
                 <h2>Header 2</h2>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima libero harum quibusdam dolor in, accusamus animi

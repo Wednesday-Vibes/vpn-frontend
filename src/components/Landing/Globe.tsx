@@ -4,8 +4,9 @@ import styled from 'styled-components';
 
 const GlobeContainer = styled.div`
     width: 100%;
-    min-height: 50rem;
+    height: 100%;
     opacity: 50%;
+    position: absolute;
 `;
 
 // THREE.js

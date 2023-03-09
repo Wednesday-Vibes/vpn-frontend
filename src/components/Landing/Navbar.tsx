@@ -17,6 +17,10 @@ const Navbar = styled.nav`
         margin: 0 auto;
         position: relative;
 
+        button.logo {
+            padding-inline: 5rem;
+        }
+
         .hamburger-menu {
             position: absolute;
             right: 0;
@@ -49,6 +53,7 @@ const Navbar = styled.nav`
                 align-items: flex-end;
                 list-style: none;
                 font-weight: 400;
+                font-size: 20px;
                 gap: 1rem;
                 justify-content: space-between;
 
@@ -57,9 +62,14 @@ const Navbar = styled.nav`
                     align-items: center;
                     gap: 0.5rem;
 
+                    i {
+                        display: none;
+                    }
+
                     .nav-link {
                         text-decoration: none;
                         color: inherit;
+                        font-weight: 600;
                     }
                 }
             }
@@ -82,6 +92,10 @@ const Navbar = styled.nav`
                 ul.links {
                     flex-direction: row;
                     align-items: center;
+
+                    li i {
+                        display: block;
+                    }
                 }
 
                 .login-signup {
@@ -108,7 +122,7 @@ export default () => {
         <Navbar className="">
             <div className="nav-container">
                 <Link to="/">
-                    <button>Logo</button>
+                    <button className="logo">Logo</button>
                 </Link>
 
                 <button
@@ -122,13 +136,13 @@ export default () => {
 
                 <div className="quick-links" aria-expanded={isMenuOpen}>
                     <ul className="links">
-                        <li className="">
+                        <li>
                             <i>icon</i>
                             <Link className="nav-link" to="/map">
                                 Platform
                             </Link>
                         </li>
-                        <li className="">
+                        <li>
                             <i>icon</i>
                             <Link className="nav-link" to="/pricing">
                                 Pricing

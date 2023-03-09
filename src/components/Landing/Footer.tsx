@@ -3,20 +3,46 @@ import styled from 'styled-components';
 const Footer = styled.div`
     background-color: #1a202c;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
     padding: 6.4rem 10.4rem;
+    gap: 3.2rem;
+
     > div:first-child {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 3.2rem;
+        button {
+            align-self: flex-start;
+            padding-inline: 5rem;
+        }
         p {
             color: #ffffff;
+            font-size: 14px;
+            text-align: left;
         }
     }
     .footer__links {
         display: flex;
-        gap: 1rem;
+        flex-direction: column;
+        text-align: left;
+        gap: 3.2rem;
+        font-size: 14px;
+        a {
+            text-decoration: none;
+            color: #a0abc0;
+        }
+    }
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        align-items: flex-end;
+
+        .footer__links {
+            flex-direction: row;
+            text-align: center;
+        }
     }
 `;
 
