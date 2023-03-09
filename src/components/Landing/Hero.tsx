@@ -4,15 +4,17 @@ import Globe from './Globe';
 const Hero = styled.div`
     position: relative;
     background-color: #edf0f7;
+    padding: 0 var(--landing-page-side-padding);
+
     .hero-floaty {
         top: 0;
         left: 0;
         right: 0;
-        width: min(100%, 144rem);
+        width: min(100%, var(--landing-page-max-width));
         height: 100%;
         min-height: 50rem;
         margin: 0 auto;
-        padding: 3rem 2rem;
+        padding-block: 3rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -45,7 +47,7 @@ const Hero = styled.div`
             }
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 769px) {
             justify-content: flex-start;
 
             .hero__content {

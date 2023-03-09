@@ -6,11 +6,11 @@ const Navbar = styled.nav`
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 1rem var(--landing-page-side-padding);
 
     .nav-container {
         width: 100%;
-        max-width: 1400px;
+        max-width: var(--landing-page-max-width);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -25,7 +25,7 @@ const Navbar = styled.nav`
             position: absolute;
             right: 0;
 
-            @media (min-width: 768px) {
+            @media (min-width: 1025px) {
                 display: none;
             }
         }
@@ -85,7 +85,7 @@ const Navbar = styled.nav`
                 }
             }
 
-            @media (min-width: 768px) {
+            @media (min-width: 1025px) {
                 display: flex;
                 flex-direction: row;
 
@@ -112,7 +112,7 @@ export default () => {
     useEffect(() => {
         window.addEventListener('resize', (e) => {
             const w = e.target as Window;
-            if (w.innerWidth > 768) {
+            if (w.innerWidth >= 769) {
                 setIsMenuOpen(false);
             }
         });
@@ -139,7 +139,7 @@ export default () => {
                         <li>
                             <i>icon</i>
                             <Link className="nav-link" to="/map">
-                                Platform
+                                Map
                             </Link>
                         </li>
                         <li>
