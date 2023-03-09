@@ -152,7 +152,7 @@ export default () => {
 
                     <div className="login-signup">
                         <Link to="/login">
-                            <button className="button--secondary">Log In</button>
+                            <button className="button--secondary">Login</button>
                         </Link>
                         <Link to="/signup">
                             <button>Sign Up</button>
