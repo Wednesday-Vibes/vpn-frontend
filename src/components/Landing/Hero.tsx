@@ -4,17 +4,16 @@ import Globe from './Globe';
 const Hero = styled.div`
     position: relative;
     background-color: #edf0f7;
-    padding: 0 var(--landing-page-side-padding);
 
     .hero-floaty {
         top: 0;
         left: 0;
         right: 0;
-        width: min(100%, var(--landing-page-max-width));
+        width: min(100%, calc(var(--landing-page-max-width) - calc(var(--landing-page-side-padding) * 2)));
         height: 100%;
         min-height: 50rem;
         margin: 0 auto;
-        padding-block: 3rem;
+        padding: 3rem var(--landing-page-side-padding);
         display: flex;
         justify-content: center;
         align-items: center;
