@@ -64,7 +64,6 @@ export default ({ connections }: GlobeProps) => {
         }
 
         window.addEventListener('resize', () => {
-            console.log('resizing');
             resizeCanvas();
         });
     }, []);

@@ -29,8 +29,6 @@ const Info = styled.div`
 
     > a button.call-to-action {
         align-self: center;
-        padding: 0.5rem;
-        background-color: #2d3648;
     }
 `;
 
