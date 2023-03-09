@@ -43,6 +43,7 @@ export default ({ connections }: GlobeProps) => {
             camera.aspect = globeContainerRef.current.clientWidth / globeContainerRef.current.clientHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(globeContainerRef.current.clientWidth, globeContainerRef.current.clientHeight);
+            renderer.render(scene, camera);
         }
     };
 
