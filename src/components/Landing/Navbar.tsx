@@ -1,126 +1,12 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Navbar = styled.nav`
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin: 0px;
-        padding: 0 2rem;
-        height: 60px;
-
-        img {
-            width: 150px;
-        }
-
-        button {
-            padding: 0.6em 1.2em;
-        }
-
-        ul {
-            display: flex;
-            color: #fff;
-            text-decoration: none;
-            list-style: none;
-            font-weight: 400;
-
-            li {
-                display: flex;
-                list-style: none;
-                color: #fff;
-                text-decoration: none;
-                font-weight: 400;
-                align-items: center;
-                padding: 0;
-
-                &:hover {
-                    background-color: rgba(0, 0, 0, 0.05);
-                    border-radius: 4px;
-                }
-            }
-        }
-
-        &.nav-white {
-            background-color: #242424;
-            border-bottom: 1px solid #f1f1f1;
-        }
-
-        .nav-Link {
-            color: white;
-            text-decoration: none;
-            font-weight: 400;
-            font-size: 14px;
-            align-items: center;
-            margin: 20px;
-        }
-
-        .nav-p {
-            align-items: center;
-            font-size: 14px;
-            margin-right: 5px;
-            margin-left: 20px;
-        }
-
-        .ln {
-            display: flex;
-            align-items: center;
-        }
-
-        .dropdown-menu {
-            background: white;
-            width: 150px;
-            padding: 0;
-            position: absolute;
-            top: 50px;
-            list-style: none;
-            text-align: start;
-            display: flex;
-            flex-direction: column;
-            margin: 0;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-            border: 1px solid #f1f1f1;
-
-            li {
-                background: #ffffff;
-                cursor: pointer;
-                padding: 0;
-                margin: 0;
-                border-radius: 5px;
-
-                &.dropdown-li {
-                    height: 40px;
-                    padding: 10px 10px;
-                }
-
-                &.nav-li {
-                    height: 20px;
-                    padding: 10px 0;
-                }
-
-                &:hover {
-                    background: #e0efff;
-                }
-            }
-
-            &.clicked {
-                display: none;
-            }
-
-            .dropdown-link {
-                display: flex;
-                padding: 10px;
-                color: black;
-                text-decoration: none;
-                font-weight: 400;
-                font-size: 14px;
-                align-items: center;
-            }
-        }
-    }
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 2rem;
 
     .nav-container {
         width: 100%;
@@ -129,9 +15,95 @@ const Navbar = styled.nav`
         justify-content: space-between;
         align-items: center;
         margin: 0 auto;
+        position: relative;
+
+        .hamburger-menu {
+            position: absolute;
+            right: 0;
+
+            @media (min-width: 768px) {
+                display: none;
+            }
+        }
+
+        .quick-links {
+            position: absolute;
+            z-index: 2;
+            display: none;
+            gap: 3rem;
+            right: 0;
+
+            &[aria-expanded='true'] {
+                display: flex;
+                flex-direction: column;
+                top: 110%;
+                background-color: #ffffff;
+                border-radius: 8px;
+                padding: 3rem;
+                box-shadow: 0px 0px 10px #00000022;
+            }
+
+            ul.links {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                list-style: none;
+                font-weight: 400;
+                gap: 1rem;
+                justify-content: space-between;
+
+                li {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+
+                    .nav-link {
+                        text-decoration: none;
+                        color: inherit;
+                    }
+                }
+            }
+
+            .login-signup {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+
+                button {
+                    width: 100%;
+                }
+            }
+
+            @media (min-width: 768px) {
+                display: flex;
+                flex-direction: row;
+
+                ul.links {
+                    flex-direction: row;
+                    align-items: center;
+                }
+
+                .login-signup {
+                    flex-direction: row;
+                }
+            }
+        }
     }
 `;
 export default () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // close menu if resizing to be big enough not to show hamburger menu
+    useEffect(() => {
+        window.addEventListener('resize', (e) => {
+            const w = e.target as Window;
+            if (w.innerWidth > 768) {
+                setIsMenuOpen(false);
+            }
+        });
+    });
+
     return (
         <Navbar className="">
             <div className="nav-container">
@@ -139,30 +111,39 @@ export default () => {
                     <button>Logo</button>
                 </Link>
 
-                <ul>
-                    <li className="nav-li">
-                        <Link className="nav-Link" to="/map">
-                            Platform
-                        </Link>
-                    </li>
-                    <li className="nav-li">
-                        <Link className="nav-Link" to="/pricing">
-                            Pricing
-                        </Link>
-                    </li>
-                </ul>
+                <button
+                    className="hamburger-menu button--secondary"
+                    onClick={() => {
+                        setIsMenuOpen((prevState) => !prevState);
+                    }}
+                >
+                    <i>Menu</i>
+                </button>
 
-                <div className="ln">
-                    <ul>
-                        <li className="nav-li">
-                            <Link className="nav-Link" to="/login">
-                                Log In
+                <div className="quick-links" aria-expanded={isMenuOpen}>
+                    <ul className="links">
+                        <li className="">
+                            <i>icon</i>
+                            <Link className="nav-link" to="/map">
+                                Platform
+                            </Link>
+                        </li>
+                        <li className="">
+                            <i>icon</i>
+                            <Link className="nav-link" to="/pricing">
+                                Pricing
                             </Link>
                         </li>
                     </ul>
-                    <Link to="/signup">
-                        <button>Sign Up</button>
-                    </Link>
+
+                    <div className="login-signup">
+                        <Link to="/login">
+                            <button className="button--secondary">Log In</button>
+                        </Link>
+                        <Link to="/signup">
+                            <button>Sign Up</button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </Navbar>

@@ -24,7 +24,7 @@ const Info = styled.div`
 
     .separator {
         height: 0.1rem;
-        background-color: #2d3648;
+        background-color: var(--color-primary);
     }
 
     > a button.call-to-action {

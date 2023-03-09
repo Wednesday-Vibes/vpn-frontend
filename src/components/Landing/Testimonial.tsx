@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Testimonial = styled.div`
     border-radius: 5px;
-    border: 1px #2d3648 solid;
+    border: 1px var(--color-primary) solid;
     flex: 1;
     display: grid;
     grid-template-rows: 12rem 1fr;
@@ -14,7 +14,7 @@ const Testimonial = styled.div`
             max-height: 100%;
             width: 100%;
         }
-        border: 0px #2d3648 solid;
+        border: 0px var(--color-primary) solid;
         border-bottom-width: 1px;
     }
     .testimonial-content {
