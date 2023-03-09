@@ -3,6 +3,7 @@ import Globe from './Globe';
 
 const Hero = styled.div`
     position: relative;
+    background-color: #edf0f7;
     .hero-floaty {
         position: absolute;
         top: 0;

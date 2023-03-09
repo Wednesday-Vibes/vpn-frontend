@@ -3,9 +3,9 @@ import { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
 const GlobeContainer = styled.div`
-    background-color: #edf0f7;
     width: 100%;
     min-height: 50rem;
+    opacity: 50%;
 `;
 
 // THREE.js
