@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Signup = styled.div`
@@ -18,6 +19,9 @@ export default () => {
                 <h2>
                     <strong>Sign Up</strong> to your account
                 </h2>
+                <div>
+                    Already have an account? <Link to="/login">Login</Link>
+                </div>
             </div>
         </Signup>
     );
