@@ -19,8 +19,11 @@ const Navbar = styled.nav`
 
         .logo-link {
             opacity: 0;
+            pointer-events: none;
+
             @media (min-width: 481px) {
                 opacity: 1;
+                pointer-events: all;
             }
 
             transition: opacity 0.3s;
