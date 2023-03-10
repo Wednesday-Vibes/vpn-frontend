@@ -4,6 +4,7 @@ import Login from './Login/Login';
 import Signup from './Login/Signup';
 
 import { createBrowserRouter, RouterProvider, Route, Link, Outlet, createRoutesFromElements } from 'react-router-dom';
+import PageNotFound from './shared/PageNotFound';
 
 const Root = () => (
     <div className="App">
@@ -14,7 +15,7 @@ const Root = () => (
 export default function App() {
     const router = createBrowserRouter(
         createRoutesFromElements(
-            <Route path="/" element={<Root />}>
+            <Route path="/" element={<Root />} errorElement={<PageNotFound />}>
                 <Route index element={<Landing />} />
                 <Route path="/map" element={<Product />} />
                 <Route path="/login" element={<Login />} />
