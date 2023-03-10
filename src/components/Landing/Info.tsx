@@ -41,7 +41,7 @@ const Info = styled.div`
 
         .separator {
             height: 0.1rem;
-            background-color: var(--color-primary);
+            background-color: var(--wf-base-800);
         }
 
         > a button.call-to-action {

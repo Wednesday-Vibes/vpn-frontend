@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 const Signup = styled.div`
-    background-color: #717d96;
+    background-color: var(--wf-base-600);
     padding: 12rem;
     height: 100dvh;
     .content {
-        background-color: #ffffff;
+        background-color: var(--wf-base-white);
         padding: 9rem 1rem;
         border-radius: 8px;
     }

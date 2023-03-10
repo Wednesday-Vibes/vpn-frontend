@@ -1,6 +1,12 @@
 :root {
     // colors
-    --color-primary: #2d3648;
+    --wf-base-900: #1a202c;
+    --wf-base-800: #2d3648;
+    --wf-base-600: #717d96;
+    --wf-base-500: #a0abc0;
+    --wf-base-400: #cbd2e0;
+    --wf-base-200: #edf0f7;
+    --wf-base-white: #ffffff;
 
     // breakpoints
     --min-mobile-size: 320px;
@@ -19,16 +25,16 @@
 }
 
 button {
-    background-color: var(--color-primary);
+    background-color: var(--wf-base-800);
     color: #ffffff;
     font-weight: 700;
     font-size: 18px;
     padding: 1.2rem 2.4rem;
     border-radius: 4px;
     box-shadow: none;
-    border: 2px solid var(--color-primary);
+    border: 2px solid var(--wf-base-800);
     &.button--secondary {
         background-color: transparent;
-        color: var(--color-primary);
+        color: var(--wf-base-800);
     }
 }

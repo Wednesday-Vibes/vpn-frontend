@@ -49,7 +49,7 @@ const Navbar = styled.nav`
                 display: flex;
                 flex-direction: column;
                 top: 110%;
-                background-color: #ffffff;
+                background-color: var(--wf-base-white);
                 border-radius: 8px;
                 padding: 3rem;
                 box-shadow: 0px 0px 10px #00000022;

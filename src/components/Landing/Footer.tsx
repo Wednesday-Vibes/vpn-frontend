@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Footer = styled.div`
-    background-color: #1a202c;
+    background-color: var(--wf-base-900);
     padding: 6.4rem var(--landing-page-side-padding);
 
     .footer__container {
@@ -22,7 +22,7 @@ const Footer = styled.div`
                 padding-inline: 5rem;
             }
             p {
-                color: #ffffff;
+                color: var(--wf-base-white);
                 font-size: 14px;
                 text-align: left;
             }
@@ -35,7 +35,7 @@ const Footer = styled.div`
             font-size: 14px;
             a {
                 text-decoration: none;
-                color: #a0abc0;
+                color: var(--wf-base-500);
             }
         }
 
