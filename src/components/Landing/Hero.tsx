@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import Globe from './Globe';
+import { useAppDispatch } from '../../redux/hooks';
+import { useAppSelector } from '../../redux/hooks';
 
 const Hero = styled.div`
     position: relative;
@@ -70,6 +72,8 @@ const Hero = styled.div`
 `;
 
 export default () => {
+    const dispatch = useAppDispatch();
+    const value = useAppSelector((state) => state.global.value);
     return (
         <Hero className="hero">
             <Globe
@@ -88,12 +92,25 @@ export default () => {
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita deleniti nobis enim dignissimos, eum
                                 eveniet quod, quisquam voluptatibus sequi illo vel ea adipisci aliquam atque cum modi alias possimus
-                                delectus.
+                                delectus. {value}
                             </p>
                         </div>
                         <div className="hero__buttons">
-                            <button>Large</button>
-                            <button className="button--secondary">Large</button>
+                            <button
+                                onClick={() => {
+                                    dispatch({ type: 'global/counterDecremented' });
+                                }}
+                            >
+                                Large
+                            </button>
+                            <button
+                                className="button--secondary"
+                                onClick={() => {
+                                    dispatch({ type: 'global/counterIncremented' });
+                                }}
+                            >
+                                Large
+                            </button>
                         </div>
                     </div>
                 </div>

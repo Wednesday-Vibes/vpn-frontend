@@ -10,8 +10,8 @@ type CarouselProps = {
 export default ({ items }: CarouselProps) => {
     return (
         <Carousel>
-            {items.map((item) => (
-                <div>{item}</div>
+            {items.map((item, index) => (
+                <div key={index}>{item}</div>
             ))}
         </Carousel>
     );

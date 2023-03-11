@@ -3,3 +3,9 @@ export interface Connection {
     latitude: number;
     longitude: number;
 }
+
+export interface User {
+    username: string;
+    firstName?: string;
+    emailAddress?: string;
+}
