@@ -33,50 +33,54 @@ export default ({ textOptions, holdWait = 3000, initialWait = 1500 }: DeletingTe
         let mode: 'destroy' | 'wait' | 'build' = 'destroy';
         setTimeout(() => {
             let timeout: number;
-            typeInterval = setInterval(() => {
-                /* BUILD / DESTROY TEXT */
-                setVisibleText((prevVisibleText) => {
-                    /* SELECT MODE */
-                    if (prevVisibleText.length === 0) {
-                        // start building up next word
-                        mode = 'build';
-                        if (currentTextOptionIndex + 1 >= textOptions.length) {
-                            currentTextOptionIndex = 0;
-                        } else {
-                            currentTextOptionIndex++;
-                        }
-                    } else if (prevVisibleText.length === textOptions[currentTextOptionIndex].length) {
-                        // wait for a sec and then start deleting current word
-                        if (mode === 'build') {
-                            mode = 'wait';
+            if (!typeInterval) {
+                typeInterval = setInterval(() => {
+                    /* BUILD / DESTROY TEXT */
+                    setVisibleText((prevVisibleText) => {
+                        /* SELECT MODE */
+                        if (prevVisibleText.length === 0) {
+                            // start building up next word
+                            mode = 'build';
+                            if (currentTextOptionIndex + 1 >= textOptions.length) {
+                                currentTextOptionIndex = 0;
+                            } else {
+                                currentTextOptionIndex++;
+                            }
+                        } else if (prevVisibleText.length === textOptions[currentTextOptionIndex].length) {
+                            // wait for a sec and then start deleting current word
+                            if (mode === 'build') {
+                                mode = 'wait';
+                            }
+
+                            if (!timeout && mode === 'wait') {
+                                timeout = setTimeout(() => {
+                                    mode = 'destroy';
+
+                                    clearTimeout(timeout);
+                                    timeout = 0;
+                                }, holdWait);
+                            }
                         }
 
-                        if (!timeout && mode === 'wait') {
-                            timeout = setTimeout(() => {
-                                mode = 'destroy';
-
-                                clearTimeout(timeout);
-                                timeout = 0;
-                            }, holdWait);
+                        switch (mode) {
+                            case 'build':
+                                return textOptions[currentTextOptionIndex].substring(0, prevVisibleText.length + 1);
+                            case 'destroy':
+                                return textOptions[currentTextOptionIndex].substring(0, prevVisibleText.length - 1);
+                            default:
+                                return prevVisibleText;
                         }
-                    }
-
-                    switch (mode) {
-                        case 'build':
-                            return textOptions[currentTextOptionIndex].substring(0, prevVisibleText.length + 1);
-                        case 'destroy':
-                            return textOptions[currentTextOptionIndex].substring(0, prevVisibleText.length - 1);
-                        default:
-                            return prevVisibleText;
-                    }
-                });
-            }, 100);
+                    });
+                }, 100);
+            }
         }, initialWait);
 
         // blinking mouse and change color
-        blinkInterval = setInterval(() => {
-            setCursorBlink((prevCursorBlink) => !prevCursorBlink);
-        }, 500);
+        if (!blinkInterval) {
+            blinkInterval = setInterval(() => {
+                setCursorBlink((prevCursorBlink) => !prevCursorBlink);
+            }, 500);
+        }
 
         return () => {
             clearInterval(typeInterval);
