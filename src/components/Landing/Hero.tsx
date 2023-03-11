@@ -73,7 +73,7 @@ const Hero = styled.div`
 
 export default () => {
     const dispatch = useAppDispatch();
-    const value = useAppSelector((state) => state.platform.value);
+    const value = useAppSelector((state) => state.global.value);
     return (
         <Hero className="hero">
             <Globe
@@ -98,7 +98,7 @@ export default () => {
                         <div className="hero__buttons">
                             <button
                                 onClick={() => {
-                                    dispatch({ type: 'platform/counterDecremented' });
+                                    dispatch({ type: 'global/counterDecremented' });
                                 }}
                             >
                                 Large
@@ -106,7 +106,7 @@ export default () => {
                             <button
                                 className="button--secondary"
                                 onClick={() => {
-                                    dispatch({ type: 'platform/counterIncremented' });
+                                    dispatch({ type: 'global/counterIncremented' });
                                 }}
                             >
                                 Large

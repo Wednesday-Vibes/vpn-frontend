@@ -1,21 +1,28 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
 
 // * write action names as "reducerName/whatHappened" *
+// try to use CRUD (Created, ~Read, Updated, Deleted) language for whatHappened
 
-/* PLATFORM */
-const platformReducerInitialState = {
-    value: 0
+/* GLOBAL */
+const globalReducerInitialState = {
+    value: 0,
+    auth: {
+        token: ''
+    }
 };
 
-export const platformReducer = createReducer(platformReducerInitialState, (builder) => {
+export const globalReducer = createReducer(globalReducerInitialState, (builder) => {
     builder
-        .addCase(createAction('platform/counterIncremented'), (state, action) => {
+        .addCase(createAction('global/counterIncremented'), (state, action) => {
             state.value++;
         })
-        .addCase(createAction('platform/counterDecremented'), (state, action) => {
+        .addCase(createAction('global/counterDecremented'), (state, action) => {
             state.value--;
         })
-        .addCase(createAction<number>('platform/counterIncrementedByAmount'), (state, action) => {
-            state.value += action.payload;
+        .addCase(createAction<number>('global/counterUpdated'), (state, action) => {
+            state.value = action.payload;
+        })
+        .addCase(createAction<string>('global/authTokenUpdated'), (state, action) => {
+            state.auth.token = action.payload;
         });
 });

@@ -1,8 +1,26 @@
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { useAppDispatch } from '../../redux/hooks';
 import MapDeckGL from './Map/MapDeckGL';
 
-export default function Product() {
+const Product = styled.div`
+    .logo-link {
+        position: absolute;
+        z-index: 1;
+        top: 1rem;
+        left: 1rem;
+    }
+`;
+
+export default () => {
+    const dispatch = useAppDispatch();
+
     return (
-        <div className="product-container">
+        <Product className="product-container">
+            <Link className="logo-link" to="/logout">
+                <button className="back button--small">logout</button>
+            </Link>
+
             <MapDeckGL
                 connection={{
                     latitude: 52.21438270370086,
@@ -10,6 +28,6 @@ export default function Product() {
                     name: 'Test'
                 }}
             />
-        </div>
+        </Product>
     );
-}
+};

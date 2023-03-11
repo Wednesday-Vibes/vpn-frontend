@@ -150,7 +150,7 @@ export default () => {
                         <li>
                             <i>icon</i>
                             <Link className="nav-link" to="/map">
-                                Map
+                                Help
                             </Link>
                         </li>
                         <li>

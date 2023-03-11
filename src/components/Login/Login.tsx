@@ -1,6 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Carousel from '../shared/Carousel';
+import { useLoginMutation } from '../../api/api';
+import { useState } from 'react';
+import { useAppDispatch } from '../../redux/hooks';
 
 const Login = styled.div`
     background-color: var(--wf-base-white);
@@ -60,6 +63,13 @@ const Login = styled.div`
 const loginCarouselItems = [<h1>Hello World</h1>, <h2>Some large screen content</h2>];
 
 export default () => {
+    const [emailAddress, setEmailAddress] = useState('');
+    const [password, setPassword] = useState('');
+
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const [attemptLogin] = useLoginMutation();
+
     return (
         <Login>
             <Link className="logo-link" to="/">
@@ -74,10 +84,47 @@ export default () => {
                         <strong>Login</strong> to your account
                     </h2>
                     <div className="email-password">
-                        <input type="email" placeholder="Email Address" />
-                        <input type="password" placeholder="Password" />
+                        <input
+                            type="email"
+                            placeholder="Email Address"
+                            value={emailAddress}
+                            onChange={(e) => {
+                                setEmailAddress(e.target.value);
+                            }}
+                        />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                            }}
+                        />
                     </div>
-                    <button className="login-button button--small">Login</button>
+                    <button
+                        className="login-button button--small"
+                        onClick={async () => {
+                            attemptLogin({ username: emailAddress, password })
+                                .unwrap()
+                                .then((loginResponse) => {
+                                    dispatch({
+                                        type: 'global/authTokenUpdated',
+                                        payload: loginResponse.authToken
+                                    });
+                                    navigate('/');
+                                })
+                                // TODO: remove
+                                .catch(() => {
+                                    dispatch({
+                                        type: 'global/authTokenUpdated',
+                                        payload: 'my fake auth token'
+                                    });
+                                    navigate('/');
+                                });
+                        }}
+                    >
+                        Login
+                    </button>
                     <div>
                         Don't have an account? <Link to="/signup">Sign up</Link>
                     </div>

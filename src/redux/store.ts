@@ -1,11 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { platformReducer } from './reducers';
+import { api } from '../api/api';
+import { globalReducer } from './reducers';
 
 export const store = configureStore({
     // store with multiple combined reducers
     reducer: {
-        platform: platformReducer
-    }
+        [api.reducerPath]: api.reducer,
+        global: globalReducer
+    },
+    // Adding the api middleware enables caching, invalidation,
+    // polling, and other useful features of `rtk-query`.
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware)
 });
 
 export type RootState = ReturnType<typeof store.getState>;
