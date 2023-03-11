@@ -71,7 +71,7 @@ export default ({ textOptions, holdWait = 3000, initialWait = 1500 }: DeletingTe
                                 return prevVisibleText;
                         }
                     });
-                }, 100);
+                }, 60);
             }
         }, initialWait);
 
