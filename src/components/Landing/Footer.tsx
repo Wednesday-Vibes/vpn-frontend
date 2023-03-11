@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Footer = styled.div`
@@ -60,11 +61,11 @@ export default () => {
                     <p>Copyright 2022 VPN Frontend</p>
                 </div>
                 <div className="footer__links">
-                    <a href="https://github.com/Wednesday-Vibes/vpn-frontend/">Privacy Policy</a>
-                    <a href="https://github.com/Wednesday-Vibes/vpn-frontend/">Terms and Conditions</a>
-                    <a href="https://github.com/Wednesday-Vibes/vpn-frontend/">Cookie Policy</a>
-                    <a href="https://github.com/Wednesday-Vibes/vpn-frontend/">Contact</a>
-                    <a href="https://github.com/Wednesday-Vibes/vpn-frontend/">View on GitHub</a>
+                    <Link to="/privacy-policy">Privacy Policy</Link>
+                    <Link to="/terms-and-conditions">Terms and Conditions</Link>
+                    <Link to="/cookie-policy">Cookie Policy</Link>
+                    <Link to="/contact">Contact</Link>
+                    <Link to="https://github.com/Wednesday-Vibes/vpn-frontend">View on GitHub</Link>
                 </div>
             </div>
         </Footer>
