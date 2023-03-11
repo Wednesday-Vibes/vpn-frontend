@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Globe from './Globe';
 import { useAppDispatch } from '../../redux/hooks';
 import { useAppSelector } from '../../redux/hooks';
+import DeletingText from './DeletingText';
 
 const Hero = styled.div`
     position: relative;
@@ -88,11 +89,14 @@ export default () => {
                 <div className="hero-floaty">
                     <div className="hero__content">
                         <div className="hero__text">
-                            <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h1>
+                            <h1>
+                                Connect to your <DeletingText textOptions={['equipment', 'team', 'infrastructure', 'resources']} /> from
+                                wherever you are. Whenever you need.
+                            </h1>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita deleniti nobis enim dignissimos, eum
-                                eveniet quod, quisquam voluptatibus sequi illo vel ea adipisci aliquam atque cum modi alias possimus
-                                delectus. {value}
+                                Stay secure, stay private, stay connected - with our VPN service. Protect your online identity and surf the
+                                web with peace of mind. Experience true online freedom and anonymity with our top-rated VPN service.
+                                {value}
                             </p>
                         </div>
                         <div className="hero__buttons">
@@ -101,7 +105,7 @@ export default () => {
                                     dispatch({ type: 'global/counterDecremented' });
                                 }}
                             >
-                                Large
+                                Try for Free
                             </button>
                             <button
                                 className="button--secondary"
@@ -109,7 +113,7 @@ export default () => {
                                     dispatch({ type: 'global/counterIncremented' });
                                 }}
                             >
-                                Large
+                                Learn More
                             </button>
                         </div>
                     </div>
