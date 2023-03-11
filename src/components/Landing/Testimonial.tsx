@@ -2,19 +2,20 @@ import styled from 'styled-components';
 
 const Testimonial = styled.div`
     border-radius: 5px;
-    border: 1px var(--color-primary) solid;
+    border: 1px var(--wf-base-800) solid;
     flex: 1;
     display: grid;
-    grid-template-rows: 12rem 1fr;
+    grid-template-rows: 12rem minmax(12rem, 1fr);
     overflow: hidden;
     text-align: left;
+    max-width: 55rem;
     .testimonial-image {
         img {
             object-fit: cover;
             max-height: 100%;
             width: 100%;
         }
-        border: 0px var(--color-primary) solid;
+        border: 0px var(--wf-base-800) solid;
         border-bottom-width: 1px;
     }
     .testimonial-content {

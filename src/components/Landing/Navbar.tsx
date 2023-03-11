@@ -6,26 +6,37 @@ const Navbar = styled.nav`
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 1rem var(--landing-page-side-padding);
 
     .nav-container {
         width: 100%;
-        max-width: 1400px;
+        max-width: var(--landing-page-max-width);
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin: 0 auto;
         position: relative;
 
-        button.logo {
-            padding-inline: 5rem;
+        .logo-link {
+            opacity: 0;
+            pointer-events: none;
+
+            @media (min-width: 481px) {
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            transition: opacity 0.3s;
+            button.logo {
+                padding-inline: 5rem;
+            }
         }
 
         .hamburger-menu {
             position: absolute;
             right: 0;
 
-            @media (min-width: 768px) {
+            @media (min-width: 1025px) {
                 display: none;
             }
         }
@@ -41,7 +52,7 @@ const Navbar = styled.nav`
                 display: flex;
                 flex-direction: column;
                 top: 110%;
-                background-color: #ffffff;
+                background-color: var(--wf-base-white);
                 border-radius: 8px;
                 padding: 3rem;
                 box-shadow: 0px 0px 10px #00000022;
@@ -85,7 +96,7 @@ const Navbar = styled.nav`
                 }
             }
 
-            @media (min-width: 768px) {
+            @media (min-width: 1025px) {
                 display: flex;
                 flex-direction: row;
 
@@ -112,7 +123,7 @@ export default () => {
     useEffect(() => {
         window.addEventListener('resize', (e) => {
             const w = e.target as Window;
-            if (w.innerWidth > 768) {
+            if (w.innerWidth >= 769) {
                 setIsMenuOpen(false);
             }
         });
@@ -121,7 +132,7 @@ export default () => {
     return (
         <Navbar className="">
             <div className="nav-container">
-                <Link to="/">
+                <Link className="logo-link" to="/">
                     <button className="logo">Logo</button>
                 </Link>
 
@@ -139,7 +150,7 @@ export default () => {
                         <li>
                             <i>icon</i>
                             <Link className="nav-link" to="/map">
-                                Platform
+                                Map
                             </Link>
                         </li>
                         <li>
@@ -152,7 +163,7 @@ export default () => {
 
                     <div className="login-signup">
                         <Link to="/login">
-                            <button className="button--secondary">Log In</button>
+                            <button className="button--secondary">Login</button>
                         </Link>
                         <Link to="/signup">
                             <button>Sign Up</button>
