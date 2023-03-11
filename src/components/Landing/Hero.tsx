@@ -90,7 +90,7 @@ export default () => {
                     <div className="hero__content">
                         <div className="hero__text">
                             <h1>
-                                Connect to your <DeletingText textOptions={['equiment', 'team', 'infrastructure', 'resources']} /> from
+                                Connect to your <DeletingText textOptions={['equipment', 'team', 'infrastructure', 'resources']} /> from
                                 wherever you are. Whenever you need.
                             </h1>
                             <p>
