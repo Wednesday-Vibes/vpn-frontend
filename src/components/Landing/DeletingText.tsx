@@ -76,11 +76,9 @@ export default ({ textOptions, holdWait = 3000, initialWait = 1500 }: DeletingTe
         }, initialWait);
 
         // blinking mouse and change color
-        if (!blinkInterval) {
-            blinkInterval = setInterval(() => {
-                setCursorBlink((prevCursorBlink) => !prevCursorBlink);
-            }, 500);
-        }
+        blinkInterval = setInterval(() => {
+            setCursorBlink((prevCursorBlink) => !prevCursorBlink);
+        }, 500);
 
         return () => {
             clearInterval(typeInterval);
