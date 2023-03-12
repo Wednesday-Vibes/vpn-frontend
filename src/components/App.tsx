@@ -7,6 +7,7 @@ import PageNotFound from './shared/PageNotFound';
 
 import { useAppSelector } from '../redux/hooks';
 import { createBrowserRouter, RouterProvider, Route, Outlet, createRoutesFromElements } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Root = () => (
     <div className="App">
@@ -14,7 +15,18 @@ const Root = () => (
     </div>
 );
 
+const routerOptions = {
+    basename: '/vpn-frontend'
+};
+
 export default function App() {
+    //! really only necessary for Github Pages
+    useEffect(() => {
+        if (!window.location.pathname.includes('vpn-frontend')) {
+            window.location.assign('/vpn-frontend');
+        }
+    }, []);
+
     const authToken = useAppSelector((state) => state.global.auth.token);
 
     const landingPageRouter = createBrowserRouter(
@@ -25,7 +37,8 @@ export default function App() {
                 <Route path="/logout" element={<Logout />} />
                 <Route path="/signup" element={<Signup />} />
             </Route>
-        )
+        ),
+        routerOptions
     );
 
     const productRouter = createBrowserRouter(
@@ -36,7 +49,8 @@ export default function App() {
                 <Route path="/logout" element={<Logout />} />
                 <Route path="/signup" element={<Signup />} />
             </Route>
-        )
+        ),
+        routerOptions
     );
 
     return <RouterProvider router={authToken ? productRouter : landingPageRouter} />;
