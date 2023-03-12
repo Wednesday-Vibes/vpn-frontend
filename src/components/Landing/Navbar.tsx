@@ -36,6 +36,10 @@ const Navbar = styled.nav`
             position: absolute;
             right: 0;
 
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
             @media (min-width: 1025px) {
                 display: none;
             }
@@ -65,7 +69,7 @@ const Navbar = styled.nav`
                 list-style: none;
                 font-weight: 400;
                 font-size: 20px;
-                gap: 1rem;
+                gap: 2rem;
                 justify-content: space-between;
 
                 li {
@@ -80,7 +84,7 @@ const Navbar = styled.nav`
                     .nav-link {
                         text-decoration: none;
                         color: inherit;
-                        font-weight: 600;
+                        font-weight: 400;
                     }
                 }
             }
@@ -142,19 +146,18 @@ export default () => {
                         setIsMenuOpen((prevState) => !prevState);
                     }}
                 >
-                    <i>Menu</i>
+                    <i className="fa fa-bars" />
+                    <span>Menu</span>
                 </button>
 
                 <div className="quick-links" aria-expanded={isMenuOpen}>
                     <ul className="links">
                         <li>
-                            <i>icon</i>
                             <Link className="nav-link" to="/map">
                                 Help
                             </Link>
                         </li>
                         <li>
-                            <i>icon</i>
                             <Link className="nav-link" to="/pricing">
                                 Pricing
                             </Link>
