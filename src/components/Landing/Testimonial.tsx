@@ -9,6 +9,11 @@ const Testimonial = styled.div`
     overflow: hidden;
     text-align: left;
     max-width: 55rem;
+
+    transition: transform 200ms;
+    &:hover {
+        transform: scale(1.03);
+    }
     .testimonial-image {
         img {
             object-fit: cover;
