@@ -35,6 +35,7 @@ const Navbar = styled.nav`
         .hamburger-menu {
             position: absolute;
             right: 0;
+            padding: 1.2rem 1.4rem;
 
             display: flex;
             align-items: center;
@@ -42,6 +43,7 @@ const Navbar = styled.nav`
 
             @media (min-width: 1025px) {
                 display: none;
+                padding: inherit;
             }
         }
 
@@ -147,13 +149,12 @@ export default () => {
                     }}
                 >
                     <i className="fa fa-bars" />
-                    <span>Menu</span>
                 </button>
 
                 <div className="quick-links" aria-expanded={isMenuOpen}>
                     <ul className="links">
                         <li>
-                            <Link className="nav-link" to="/map">
+                            <Link className="nav-link" to="/help">
                                 Help
                             </Link>
                         </li>
