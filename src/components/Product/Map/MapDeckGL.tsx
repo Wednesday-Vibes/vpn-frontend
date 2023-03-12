@@ -21,10 +21,13 @@ const MapDeckGL: React.FC<Props> = ({ connection }) => {
             initialViewState: {
                 longitude: connection.longitude,
                 latitude: connection.latitude,
-                zoom: 13,
+                zoom: 1.3,
+                maxZoom: 5,
+                minZoom: 1.3,
                 pitch: 0,
                 bearing: 0
-            }
+            },
+            controller: { dragPan: false, touchRotate: false, doubleClickZoom: false }
         });
     }, [connection]);
 
@@ -45,22 +48,8 @@ const MapDeckGL: React.FC<Props> = ({ connection }) => {
     ];
 
     return (
-        <DeckGL
-            ref={deckRef}
-            initialViewState={{
-                longitude: connection.longitude,
-                latitude: connection.latitude,
-                zoom: 13,
-                pitch: 0,
-                bearing: 0
-            }}
-            controller={true}
-            layers={layers}
-        >
-            <StaticMap
-                mapboxAccessToken={viteMapToken}
-                mapStyle="mapbox://styles/mapbox/dark-v10"
-            />
+        <DeckGL ref={deckRef} controller={true} layers={layers}>
+            <StaticMap mapboxAccessToken={viteMapToken} mapStyle="mapbox://styles/mapbox/dark-v10" />
         </DeckGL>
     );
 };
