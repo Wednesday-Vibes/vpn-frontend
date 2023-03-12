@@ -71,7 +71,7 @@ const Navbar = styled.nav`
                 list-style: none;
                 font-weight: 400;
                 font-size: 20px;
-                gap: 2rem;
+                gap: 1rem;
                 justify-content: space-between;
 
                 li {
@@ -109,7 +109,7 @@ const Navbar = styled.nav`
                 ul.links {
                     flex-direction: row;
                     align-items: center;
-                    gap: 1rem;
+                    gap: 2rem;
 
                     li i {
                         display: block;
