@@ -109,6 +109,7 @@ const Navbar = styled.nav`
                 ul.links {
                     flex-direction: row;
                     align-items: center;
+                    gap: 1rem;
 
                     li i {
                         display: block;
