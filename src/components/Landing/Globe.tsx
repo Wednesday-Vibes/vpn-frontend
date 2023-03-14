@@ -16,7 +16,7 @@ const GlobeContainer = styled.div`
 `;
 
 type GlobeProps = {
-    connections: [Connection, Connection];
+    connections?: [Connection, Connection];
 };
 
 export default ({ connections }: GlobeProps) => {
