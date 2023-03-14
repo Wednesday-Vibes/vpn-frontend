@@ -77,14 +77,7 @@ export default () => {
     const value = useAppSelector((state) => state.global.value);
     return (
         <Hero className="hero">
-            <Globe
-                connections={[
-                    {
-                        fromCoords: [12.1234134, 142.2342342],
-                        toCoords: [456.234234234, 234.6424323]
-                    }
-                ]}
-            />
+            <Globe />
             <div className="hero-floaty-container">
                 <div className="hero-floaty">
                     <div className="hero__content">
