@@ -11,6 +11,8 @@ const Hero = styled.div`
     .hero-floaty-container {
         width: 100%;
         padding: 0rem var(--landing-page-side-padding);
+        display: flex;
+        flex-direction: column;
 
         .hero-floaty {
             top: 0;
@@ -18,27 +20,42 @@ const Hero = styled.div`
             right: 0;
             max-width: calc(var(--landing-page-max-width));
             margin: 0 auto;
-            height: 100%;
-            min-height: 50rem;
+            flex-basis: 50rem;
+            flex-shrink: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
             z-index: 1;
 
+            @media (min-width: 769px) {
+                justify-content: flex-start;
+            }
+
             .hero__content {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                justify-content: space-between;
                 text-align: center;
                 gap: 2rem;
+                height: 100%;
                 width: min(100%, 60rem);
-                padding-block: 2rem;
+                padding-block: 4rem;
+
+                @media (min-width: 481px) {
+                    padding-block: 8rem;
+                }
+
+                @media (min-width: 769px) {
+                    justify-content: center;
+                    align-items: flex-start;
+                    text-align: left;
+                }
 
                 .hero__text {
                     @media (min-width: 769px) {
-                        max-width: 70%;
+                        max-width: none;
                     }
 
                     h1 {
@@ -53,19 +70,6 @@ const Hero = styled.div`
                 .hero__buttons {
                     display: flex;
                     gap: 2rem;
-                }
-            }
-
-            @media (min-width: 769px) {
-                justify-content: flex-start;
-
-                .hero__content {
-                    align-items: flex-start;
-                    text-align: left;
-
-                    .hero__text {
-                        max-width: none;
-                    }
                 }
             }
         }
