@@ -1,73 +1,79 @@
-import * as THREE from 'three';
-import { useRef, useEffect } from 'react';
 import styled from 'styled-components';
+import type { Connection } from '../../logic/types';
+import Globe, { GlobeMethods } from 'react-globe.gl';
+import { useEffect, useRef, useState } from 'react';
 
 const GlobeContainer = styled.div`
-    width: 100%;
-    height: 100%;
-    opacity: 50%;
-    position: absolute;
+    display: none;
+
+    @media (min-width: 1120px) {
+        display: block;
+        width: min(500px, 100%);
+        height: 100%;
+        position: absolute;
+        right: 0;
+    }
 `;
 
-// THREE.js
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, 800 / 600, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ alpha: true });
-// renderer.setSize(800, 600);
-
-const geometry = new THREE.SphereGeometry(1, 32, 16);
-const material = new THREE.MeshBasicMaterial({ color: 0x4a5468 });
-const sphere = new THREE.Mesh(geometry, material);
-sphere.scale.x = 2;
-sphere.scale.y = 2;
-sphere.scale.z = 2;
-sphere.position.y = -1;
-scene.add(sphere);
-
-camera.position.set(0, 0, 3);
-
-export type Connection = {
-    fromCoords: [number, number];
-    toCoords: [number, number];
-};
-
 type GlobeProps = {
-    connections: Connection[];
+    connections: [Connection, Connection];
 };
 
 export default ({ connections }: GlobeProps) => {
-    // show connections between cities
-    const globeContainerRef = useRef<HTMLDivElement>(null);
+    const [globeWidth, setGlobeWidth] = useState<number>();
+    const [globeHeight, setGlobeHeight] = useState<number>();
+    const globeContainerRef = useRef<HTMLInputElement>(null);
+    const globeRef = useRef<GlobeMethods>();
 
-    const resizeCanvas = () => {
-        if (globeContainerRef.current !== null) {
-            camera.aspect = globeContainerRef.current.clientWidth / globeContainerRef.current.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(globeContainerRef.current.clientWidth, globeContainerRef.current.clientHeight);
-            renderer.render(scene, camera);
+    const resizeGlobe = () => {
+        if (globeContainerRef.current) {
+            setGlobeWidth(globeContainerRef.current.offsetWidth);
+            setGlobeHeight(globeContainerRef.current.offsetHeight);
         }
-    };
-
-    // animate rotation
-    const tick = () => {
-        window.requestAnimationFrame(() => {
-            sphere.rotation.y += 0.1;
-            renderer.render(scene, camera);
-            // tick();
-        });
     };
 
     useEffect(() => {
-        if (globeContainerRef.current !== null) {
-            globeContainerRef.current.appendChild(renderer.domElement);
-            resizeCanvas();
-            tick();
-        }
-
+        // set initial globe size
+        resizeGlobe();
+        // resize globe on window resize
         window.addEventListener('resize', () => {
-            resizeCanvas();
+            resizeGlobe();
         });
+
+        if (globeRef.current) {
+            globeRef.current.controls().autoRotate = true;
+            globeRef.current.controls().autoRotateSpeed = -2;
+            globeRef.current.controls().enabled = false;
+        }
     }, []);
 
-    return <GlobeContainer className="globe-container" ref={globeContainerRef} />;
+    // Generate random data
+    const N = 20;
+    const arcsData = [...Array(N).keys()].map(() => ({
+        startLat: (Math.random() - 0.5) * 180,
+        startLng: (Math.random() - 0.5) * 360,
+        endLat: (Math.random() - 0.5) * 180,
+        endLng: (Math.random() - 0.5) * 360,
+        color: 'white'
+    }));
+
+    return (
+        <GlobeContainer className="globe-container" ref={globeContainerRef}>
+            <Globe
+                ref={globeRef}
+                globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+                arcsData={arcsData}
+                arcColor={'color'}
+                arcDashLength={() => Math.random()}
+                arcDashGap={() => Math.random()}
+                arcDashAnimateTime={() => Math.random() * 1000 + 3000}
+                width={globeWidth}
+                height={globeHeight}
+                backgroundColor="#00000000"
+                atmosphereColor="black"
+                enablePointerInteraction={false}
+                // showGlobe={false}
+            />
+        </GlobeContainer>
+    );
 };
