@@ -140,7 +140,9 @@ export default () => {
         <Navbar className="">
             <div className="nav-container">
                 <Link className="logo-link" to="/">
-                    <button className="logo">Logo</button>
+                    <button tabIndex={-1} className="logo">
+                        Logo
+                    </button>
                 </Link>
 
                 <button
@@ -168,10 +170,12 @@ export default () => {
 
                     <div className="login-signup">
                         <Link to="/login">
-                            <button className="button--secondary">Login</button>
+                            <button tabIndex={-1} className="button--secondary">
+                                Login
+                            </button>
                         </Link>
                         <Link to="/signup">
-                            <button>Sign Up</button>
+                            <button tabIndex={-1}>Sign Up</button>
                         </Link>
                     </div>
                 </div>

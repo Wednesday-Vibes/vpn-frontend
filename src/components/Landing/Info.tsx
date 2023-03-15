@@ -98,7 +98,7 @@ export default () => {
                 <div className="separator" />
 
                 <Link className="call-to-action" to="/signup">
-                    <button>Create an Account</button>
+                    <button tabIndex={-1}>Create an Account</button>
                     <p>No card information required</p>
                 </Link>
             </div>
