@@ -40,7 +40,7 @@ export default ({ imageSrc, title, textContent }: TestimonialProps) => {
     return (
         <Testimonial>
             <div className="testimonial-image">
-                <img src={imageSrc} />
+                <img key={Math.random()} src={imageSrc} />
             </div>
             <div className="testimonial-content">
                 <h3>{title}</h3>
