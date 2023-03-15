@@ -73,7 +73,9 @@ export default () => {
     return (
         <Login>
             <Link className="logo-link" to="/">
-                <button className="back button--small button--secondary">back</button>
+                <button tabIndex={-1} className="back button--small button--secondary">
+                    back
+                </button>
             </Link>
             <div className="splash">
                 <Carousel items={loginCarouselItems} />
